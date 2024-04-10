@@ -1,0 +1,67 @@
+
+APP.MODULE.TS
+---------------ORIGINAL CODE----------------------
+import { Component,AfterViewInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule, RouterOutlet],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
+})
+export class AppComponent {
+  title = 'resume';
+}
+
+-----------------MODIFIED-----------------------
+import { Component, AfterViewInit } from '@angular/core';
+
+declare var Typed: any;
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements AfterViewInit {
+  title = 'app';
+
+  ngAfterViewInit() {
+    new Typed('.text', {
+      strings: ["Frontend Developer" , "Fullstack developer"],
+      typeSpeed:100,
+      backSpeed:100,
+      backDelay:1000,
+      loop: true
+    });
+  }
+}
+---------------working code------------------------------
+import { Component,AfterViewInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
+import Typed from 'typed.js';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule, RouterOutlet],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
+})
+export class AppComponent implements AfterViewInit {
+  title = 'resume';
+
+  ngAfterViewInit() {
+    new Typed('.text', {
+      strings: ["Frontend Developer" , "Fullstack developer"],
+      typeSpeed:100,
+      backSpeed:100,
+      backDelay:1000,
+      loop: true
+    });
+}
+}
